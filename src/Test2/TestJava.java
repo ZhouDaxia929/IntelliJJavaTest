@@ -1,44 +1,45 @@
 package Test2;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.*;
+//import java.io.File;
+//import java.io.FileInputStream;
 
 /**
  * Created by ggggg on 2016/9/28.
  */
 public class TestJava {
     public static void main(String[] args) {
-       List<String> a = new LinkedList<>();
-        a.add("Amy");
-        a.add("Carl");
-        a.add("Erica");
-        List<String> b = new LinkedList<>();
-        b.add("Bob");
-        b.add("Doug");
-        b.add("Frances");
-        b.add("Gloria");
 
-        //Merge the words from b into a
-        ListIterator<String> aIter = a.listIterator();
-        Iterator<String> bIter = b.iterator();
-        while(bIter.hasNext()){
-            if(aIter.hasNext())
-                aIter.next();
-            aIter.add(bIter.next());
+        /*
+        Charset cset = new Charset.forName("ISO-8859-1");
+
+        Set<String> aliases = cset.aliases();
+        for(String alias : aliases)
+            System.out.println(alias);
+        */
+        Map<String, Charset> charsets = Charset.availableCharsets();
+        for(String name : charsets.keySet())
+            System.out.println(name);
+
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(File.separator);
+        try{
+            DataInputStream din = new DataInputStream(
+                    new BufferedInputStream(
+                            new FileInputStream("employee.dat")
+                    )
+            );
+            int i = din.read();
+            System.out.println(i);
         }
-        System.out.println(a);
-
-        //remove every second word form b
-        bIter = b.iterator();
-        while(bIter.hasNext()){
-            bIter.next();
-            if(bIter.hasNext()){
-                bIter.next();
-                bIter.remove();
-            }
+        catch(FileNotFoundException e){
+            System.out.println("未找到");
+            System.exit(0);
         }
-        System.out.println(b);
-
-        //bulk operation: remove all words in b from a
-        a.removeAll(b);
-        System.out.println(a);
+        catch(IOException e) {
+            System.out.println("发生错误");
+            System.exit(0);
+        }
     }
 }

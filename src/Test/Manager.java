@@ -5,6 +5,7 @@ package Test;
  */
 public class Manager extends Employee{
     private double bonus;
+    private Employee secretary;
     public Manager(String n, double s, int year, int month, int day){
         super(n, s, year, month, day);
         bonus = 0;
@@ -16,6 +17,7 @@ public class Manager extends Employee{
     public void setBonus(double b){
         bonus = b;
     }
+    public void setSecretary(Employee e){secretary = e;}
     public boolean equals(Object otherObject){
         if(!super.equals(otherObject))
             return false;

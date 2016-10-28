@@ -7,7 +7,7 @@ package Test;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
-public class Employee{
+public class Employee implements java.io.Serializable{
     private String name;
     private double salary;
     private Date hireDay;

@@ -1,4 +1,17 @@
 package Test2;
+<<<<<<< HEAD
+
+public class TestJava {
+    public static void main(String[] args){
+        Print pt = new Print();
+        PrintWord PW = new PrintWord(pt);
+        Thread t = new Thread(PW);
+        t.start();
+
+        PrintNum PN = new PrintNum(pt);
+        Thread t2 = new Thread(PN);
+        t2.start();
+=======
 public class TestJava{
     public volatile static int count = 0;
     public static void inc(){
@@ -25,5 +38,6 @@ public class TestJava{
 
         //这里每次运行的值都可能不同，可能为1000
         System.out.println("运行结果：Counter.count = " + TestJava.count);
+>>>>>>> origin/master
     }
 }

@@ -2,10 +2,14 @@ package guessNumber;
 
 /**
  * Created by ggggg on 2016/11/3.
- * http://www.cppblog.com/qinzuoyan/archive/2009/08/14/93306.html
  */
-public class TestGuessNumber extends Data{
-
+public class TestGuessNumber {
+    private static final int N = 4; // 排列长度
+    private static final int M = (10 * 9 * 8 * 7); // 总的可能排列数,5040
+    private static final int MATCH = (N * 10); // 猜测正确时的judge()返回值，如果是完全正确结果，judge函数会返回40
+    private static int[][] arrange = new int[M][N]; // 所有可能排列的列表，一行一个排列
+    private static char[][] table = new char[M][N]; // 各排列之间的关系矩阵
+    private static int arr_count; // 用于生成所有排列时使用的全局变量
     public static void swap(int a[], int i, int j){
         int temp = a[i];
         a[i] = a[j];
@@ -84,51 +88,5 @@ public class TestGuessNumber extends Data{
         System.out.print("\n");
     }
 
-    // 玩一次游戏，返回猜测次数
-    public static int play(Player p, Judgment j){
-        int time = 0;
-        p.init();
-        j.init();
-        while(true){
-            int guess = p.getNextGuess();
-            char result = j.doJudge(guess);
-            //print_guess_info(guess, result);
-            time++;
-            if(result == (char)MATCH)
-                break;
-            p.setGuessResult(guess, result);
-        }
-        return time;
-    }
 
-    public static void main(String[] args) {
-        Judgment jp = JudgmentFactory.makeJudgment();
-        Player pp = PlayerFactory.makePlayer();
-        int[] time_stat = new int[M];// 次数统计表
-        // 初始化次数统计表
-        for(int i = 0; i < M; i++)
-            time_stat[i] = 0;
-        // 初始化排列列表和关系矩阵
-        init_arrange();
-        init_table();
-        // 每一种排列情况都玩一次
-        for(int i = 0; i < M; i++){
-            ((HonestJudgment)jp).setArrange(arrange[i]);
-            int t = play(pp, jp);
-            print_arrange(i);
-            System.out.println(" : " + t);
-            time_stat[t]++;
-        }
-        // 统计结果
-        int total = 0;
-        System.out.println("-------------");
-        for(int i = 0; i < M; i++){
-            if(time_stat[i] > 0){
-                System.out.println(i + "\t" + time_stat[i]);
-                total += time_stat[i] * i;
-            }
-        }
-        System.out.println("Average: " + total + "/" + M + " = " + (float)total / M);
-        System.out.println("-------------");
-    }
 }

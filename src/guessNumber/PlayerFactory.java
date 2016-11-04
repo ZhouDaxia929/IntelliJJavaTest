@@ -5,6 +5,8 @@ package guessNumber;
  */
 public class PlayerFactory {
     public static Player makePlayer(){
-        return new NaivePlayer();
+        //return new NaivePlayer();
+        //return  new Clever1Player();
+        return new Clever2Player();
     }
 }

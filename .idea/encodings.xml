@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/Test1/CountDaysTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/Test1/StringTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/robot/Constants.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/robot/GamePanel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/robot/MainFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/robot/Robot.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/robot/TDFake.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/robot/TitlePanel.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
